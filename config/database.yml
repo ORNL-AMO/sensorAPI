@@ -12,6 +12,8 @@ default: &default
 development:
   <<: *default
   database: db/development
+  pool: 5
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -22,4 +24,6 @@ test:
 
 production:
   <<: *default
-  database: db/production
+  database: dokiqbq4bu746
+  username: dkytfqlytbuegz
+  password: 96723b5e9f69c6874bcb37a027d5235fa362cf8b47c586f9b33413e9779a59b4
