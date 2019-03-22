@@ -12,4 +12,19 @@ class SensorController < ApplicationController
       end
     end
   end
+
+  def create
+    sensorType = params[:sensorType]
+    id = params[:id]
+    time = params[:timestamp]
+    reading = [:sensorReading]
+
+    case sensorType
+    when 'flow_rate'
+      FlowRate.create(device_id: id, timestamp: time, sensorReading: reading)
+    when 'pressure'
+      # Pressure.create()
+    else
+      console.log("Unrecorgnized sensor type: #{sensorType}")
+  end
 end
