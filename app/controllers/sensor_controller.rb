@@ -25,7 +25,7 @@ class SensorController < ApplicationController
     when 'pressure'
       # Pressure.create()
     else
-      console.log("Unrecorgnized sensor type: #{sensorType}")
+      puts "Unrecognized sensor type: #{sensorType}"
     end
   end
 end
