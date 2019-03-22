@@ -26,5 +26,6 @@ class SensorController < ApplicationController
       # Pressure.create()
     else
       console.log("Unrecorgnized sensor type: #{sensorType}")
+    end
   end
 end
