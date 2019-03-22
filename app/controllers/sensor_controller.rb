@@ -4,9 +4,12 @@ class SensorController < ApplicationController
   def show
     sensorType = params[:sensorType]
     id = params[:id]
-    data = []
-    r = Random.new
-    data.push( { timestamp: Time.now, sensorReading: r.rand(500)/100.0})
+    since = params[:since]
+
+    table = getSensorTable(sensorType)
+    return if table == nil
+
+    data = table.where(["device_id = ? and timestamp > ?", id, since])
 
     respond_to do |format|
       format.json do
@@ -21,13 +24,21 @@ class SensorController < ApplicationController
     time = params[:timestamp]
     reading = [:sensorReading]
 
+    table = getSensorTable(sensorType)
+    return if table == nil
+
+    table.create(device_id: id, timestamp: time, sensor_reading: reading)
+  end
+
+  def getSensorTable(sensorType)
     case sensorType
     when 'flow_rate'
-      FlowRate.create(device_id: id, timestamp: time, sensor_reading: reading)
+      return FlowRate
     when 'pressure'
-      # Pressure.create()
+      # return Pressure
     else
       puts "Unrecognized sensor type: #{sensorType}"
+      return nil
     end
   end
 end
