@@ -1,4 +1,6 @@
 class SensorController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def show
     sensorType = params[:sensorType]
     id = params[:id]
