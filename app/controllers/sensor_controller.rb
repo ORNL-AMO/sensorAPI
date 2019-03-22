@@ -23,7 +23,7 @@ class SensorController < ApplicationController
 
     case sensorType
     when 'flow_rate'
-      FlowRate.create(device_id: id, timestamp: time, sensorReading: reading)
+      FlowRate.create(device_id: id, timestamp: time, sensor_reading: reading)
     when 'pressure'
       # Pressure.create()
     else
