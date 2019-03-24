@@ -24,7 +24,7 @@ class SensorController < ApplicationController
     sensorType = params[:sensorType]
     id = params[:id]
     time = params[:timestamp]
-    reading = [:sensorReading]
+    reading = params[:sensorReading]
 
     table = getSensorTable(sensorType)
     return if table == nil
