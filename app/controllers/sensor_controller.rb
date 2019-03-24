@@ -29,7 +29,7 @@ class SensorController < ApplicationController
     table = getSensorTable(sensorType)
     return if table == nil
 
-    table.create(device_id: id, timestamp: time, sensor_reading: reading)
+    table.create(device_id: id, timestamp: time, sensor_reading: reading.to_f)
   end
 
   def delete
