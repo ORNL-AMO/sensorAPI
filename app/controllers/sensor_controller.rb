@@ -7,10 +7,12 @@ class SensorController < ApplicationController
     since = params[:since]
 
     table = getSensorTable(sensorType)
-    return if table == nil
-
-    data = table.where(["device_id = ? and timestamp > ?", id, since])
-
+    if table == nil
+      r = Random.new
+      data = [{sensor_reading: r.rand(500)/100.0 ,"timestamp": Time.now}]
+    else
+      data = table.where(["device_id = ? and timestamp > ?", id, since]).select("timestamp, sensor_reading")
+    end
     respond_to do |format|
       format.json do
         render json: data
@@ -28,6 +30,18 @@ class SensorController < ApplicationController
     return if table == nil
 
     table.create(device_id: id, timestamp: time, sensor_reading: reading)
+  end
+
+  def delete
+    sensorType = params[:sensorType]
+    id = params[:id]
+    since = params[:since]
+
+    table = getSensorTable(sensorType)
+    return if table == nil
+
+    # TODO add device table
+    table.where(:device_id => id).destroy_all
   end
 
   def getSensorTable(sensorType)
