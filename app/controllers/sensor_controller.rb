@@ -8,11 +8,14 @@ class SensorController < ApplicationController
 
     table = getSensorTable(sensorType)
     if table == nil
+      # raise ActionController::RoutingError.new('Unrecognized Sensor')
+      # TODO remove this once testing is done
       r = Random.new
       data = [{sensor_reading: r.rand(500)/100.0 ,"timestamp": Time.now}]
     else
       data = table.where(["device_id = ? and timestamp > ?", id, since]).select("timestamp, sensor_reading")
     end
+
     respond_to do |format|
       format.json do
         render json: data
@@ -27,7 +30,7 @@ class SensorController < ApplicationController
     reading = params[:sensorReading]
 
     table = getSensorTable(sensorType)
-    return if table == nil
+    return raise ActionController::RoutingError.new('Unrecognized Sensor') if table == nil
 
     table.create(device_id: id, timestamp: time, sensor_reading: reading.to_f)
   end
@@ -45,11 +48,19 @@ class SensorController < ApplicationController
   end
 
   def getSensorTable(sensorType)
-    case sensorType
+    case sensorType.downcase()
     when 'flow_rate'
       return FlowRate
-    when 'pressure'
-      # return Pressure
+    when 'suction_pressure'
+      return SuctionPressure
+    when 'discharge_pressure'
+      return DischargePressure
+    when 'discharge_elevation'
+      return DischargeElevation
+    when 'tank_gas_overpressure'
+      return TankGasOverpressure
+    when 'tank_fluid_surface_elevation'
+      return TankFluidSurfaceElevation
     else
       puts "Unrecognized sensor type: #{sensorType}"
       return nil

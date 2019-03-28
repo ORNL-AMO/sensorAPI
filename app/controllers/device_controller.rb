@@ -1,6 +1,5 @@
 class DeviceController < ApplicationController
-
-
+  #TODO: create device model
   # create a new device in db and return it's id
   def create
   end

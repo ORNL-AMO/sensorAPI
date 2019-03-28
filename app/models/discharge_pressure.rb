@@ -1,0 +1,2 @@
+class DischargePressure < ApplicationRecord
+end

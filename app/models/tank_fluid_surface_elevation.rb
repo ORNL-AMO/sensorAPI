@@ -1,0 +1,2 @@
+class TankFluidSurfaceElevation < ApplicationRecord
+end

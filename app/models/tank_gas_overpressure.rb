@@ -1,0 +1,2 @@
+class TankGasOverpressure < ApplicationRecord
+end

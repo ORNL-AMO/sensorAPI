@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  device_id: MyString
+  sensor_reading: 9.99
+  timestamp: 2019-03-28 10:20:23
+
+two:
+  device_id: MyString
+  sensor_reading: 9.99
+  timestamp: 2019-03-28 10:20:23

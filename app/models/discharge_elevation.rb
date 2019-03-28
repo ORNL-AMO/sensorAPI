@@ -1,0 +1,2 @@
+class DischargeElevation < ApplicationRecord
+end

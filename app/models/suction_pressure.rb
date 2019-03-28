@@ -1,0 +1,2 @@
+class SuctionPressure < ApplicationRecord
+end
