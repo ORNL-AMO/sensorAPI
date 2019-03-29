@@ -5,6 +5,9 @@ class SensorController < ApplicationController
     sensorType = params[:sensorType]
     id = params[:id]
     since = params[:since]
+    if (since == nil)
+      since = Time.now - (60 * 60 * 24)
+    end
 
     table = getSensorTable(sensorType)
     if table == nil
