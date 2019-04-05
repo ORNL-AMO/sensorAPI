@@ -3,7 +3,7 @@ class SensorController < ApplicationController
 
 # params[:since] should be a UTC date string
   def show
-    sensorType = params[:sensorType]
+    sensorType = params[:sensor_type]
     id = params[:id]
     since = params[:since]
 
