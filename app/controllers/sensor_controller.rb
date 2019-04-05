@@ -1,6 +1,7 @@
 class SensorController < ApplicationController
   skip_before_action :verify_authenticity_token
 
+# params[:since] should be a UTC date string
   def show
     sensorType = params[:sensorType]
     id = params[:id]
@@ -24,10 +25,10 @@ class SensorController < ApplicationController
   end
 
   def create
-    sensorType = params[:sensorType]
+    sensorType = params[:sensor_type]
     id = params[:id]
     time = params[:timestamp]
-    reading = params[:sensorReading]
+    reading = params[:sensor_reading]
 
     table = getSensorTable(sensorType)
     return raise ActionController::RoutingError.new('Unrecognized Sensor') if table == nil
@@ -36,7 +37,7 @@ class SensorController < ApplicationController
   end
 
   def delete
-    sensorType = params[:sensorType]
+    sensorType = params[:sensor_type]
     id = params[:id]
     since = params[:since]
 
@@ -47,6 +48,7 @@ class SensorController < ApplicationController
     table.where(:device_id => id).destroy_all
   end
 
+  private
   def getSensorTable(sensorType)
     case sensorType.downcase()
     when 'flow_rate'
