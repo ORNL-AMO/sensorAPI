@@ -63,6 +63,8 @@ class SensorController < ApplicationController
       return TankGasOverpressure
     when 'tank_fluid_surface_elevation'
       return TankFluidSurfaceElevation
+    when 'motor_power'
+      return MotorPower
     else
       puts "Unrecognized sensor type: #{sensorType}"
       return nil
