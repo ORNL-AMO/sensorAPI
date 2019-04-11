@@ -12,7 +12,7 @@ class SensorController < ApplicationController
       # raise ActionController::RoutingError.new('Unrecognized Sensor')
       # TODO remove this once testing is done
       r = Random.new
-      data = [{sensor_reading: r.rand(500)/100.0 ,"timestamp": Time.now}]
+      data = [{sensor_reading: (1 + r.rand(500)/100.0) ,"timestamp": Time.now}]
     else
       data = table.where(["device_id = ? and timestamp > ?", id, since]).select("timestamp, sensor_reading")
     end
