@@ -3,6 +3,7 @@ class DeviceController < ApplicationController
 
   # create a new device in db and return it's id
   def create
+    puts "creating new device"
     deviceName = params[:device_name]
     deviceType = params[:type]
 
