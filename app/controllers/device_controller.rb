@@ -7,7 +7,7 @@ class DeviceController < ApplicationController
     deviceName = params[:device_name]
     deviceType = params[:type]
 
-    newDevice = Device.create(device_name: , type: deviceType)
+    newDevice = Device.create(device_name: deviceName, type: deviceType)
 
     respond_to do |format|
       format.json do
