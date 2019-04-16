@@ -1,7 +1,18 @@
 class DeviceController < ApplicationController
-  #TODO: create device model
+  skip_before_action :verify_authenticity_token
+
   # create a new device in db and return it's id
   def create
+    deviceName = params[:device_name]
+    deviceType = params[:type]
+
+    newDevice = Device.create(device_name: , type: deviceType)
+
+    respond_to do |format|
+      format.json do
+        render json: { device_id: newDevice.id}
+      end
+    end
   end
 
   # delete device with id = params[:device_id]
