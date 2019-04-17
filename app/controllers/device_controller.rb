@@ -34,28 +34,17 @@ class DeviceController < ApplicationController
     puts "updating a device"
     device = Device.find(params[:device_id])
     device.data = params[:data].to_json
+    device.save
   end
 
   # return a specific device's information
   def show
     device = Device.find(params[:device_id])
-    table = getDeviceTable(device.device_type)
-    specificDevice = table.where(:device_id => device.id)
 
     respond_to do |format|
       format.json do
-        render json: specificDevice
+        render json: device
       end
-    end
-  end
-
-  def getDeviceTable(deviceType)
-    case sensorType.downcase()
-    when 'pump'
-      return Pump
-    else
-      puts "Unrecognized device type: #{deviceType}"
-      return nil
     end
   end
 end
