@@ -11,6 +11,12 @@ class DeviceController < ApplicationController
     data = params[:data]
 
     newDevice = Device.create(device_name: deviceName, device_type: deviceType, data: data.to_json)
+
+    respond_to do |format|
+      format.json do
+        render json: {device_id: newDevice.id}
+      end
+    end
   end
 
   # delete device with id = params[:device_id]
