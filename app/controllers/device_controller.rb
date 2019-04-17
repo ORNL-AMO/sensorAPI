@@ -23,6 +23,13 @@ class DeviceController < ApplicationController
   # return a list of devices
   # [{:device_id, :device_name, :device_type}, ...]
   def index
+    devices = Device.all
+
+    respond_to do |format|
+      format.json do
+        render json: devices
+      end
+    end
   end
 
   # return a specific device's information
