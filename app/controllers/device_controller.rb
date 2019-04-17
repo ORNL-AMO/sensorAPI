@@ -31,6 +31,7 @@ class DeviceController < ApplicationController
   end
 
   def update
+    puts "updating a device"
     device = Device.find(params[:device_id])
     device.data = params[:data].to_json
   end
