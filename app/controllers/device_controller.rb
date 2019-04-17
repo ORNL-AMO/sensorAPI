@@ -18,6 +18,7 @@ class DeviceController < ApplicationController
 
   # delete device with id = params[:device_id]
   def delete
+    Device.find(params[:device_id]).destroy
   end
 
   # return a list of devices
