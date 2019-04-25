@@ -6,6 +6,7 @@ Once you have a live server, you can start to create devices within the Mimir ap
 ![alt-text](https://i.imgur.com/qeHREwu.jpg)
 
 ## API DOCS
+### route/:parameter
 HTTP METHOD: {Parameter1, Parameter2, ...}
 ### sensors/:sensor_type
 POST: {id, timestamp, sensor_reading}<br/>
