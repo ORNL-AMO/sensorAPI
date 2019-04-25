@@ -1,24 +1,13 @@
-# README
+# Mimir-backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
+## How does it work?
+You simply clone the repo and start running the server on your network.
+Once you have a live server, you can start to create devices within the Mimir app. When you create a device, you will get a device id.
+![alt-text](https://imgur.com/qeHREwu)
 * Ruby version
-
-* System dependencies
-
-* Configuration
+Ruby 2.3
 
 * Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+bin/rake db:migrate
+```
