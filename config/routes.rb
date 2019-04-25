@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   post 'devices', to: 'device#create'
   get 'devices', to: 'device#index'
   get 'devices/:device_id', to: 'device#show'
+  put 'devices/:device_id', to: 'device#update'
   delete 'devices/:device_id', to: 'device#delete'
 end

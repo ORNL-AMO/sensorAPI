@@ -1,7 +1,7 @@
 class CreateTankFluidSurfaceElevations < ActiveRecord::Migration[5.1]
   def change
     create_table :tank_fluid_surface_elevations do |t|
-      t.string :device_id
+      t.string :device_id, index: true
       t.decimal :sensor_reading
       t.datetime :timestamp
 
