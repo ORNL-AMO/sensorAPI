@@ -9,9 +9,9 @@ Once you have a live server, you can start to create devices within the Mimir ap
 HTTP METHOD: {Parameter1, Parameter2, ...}
 ### sensors/:sensor_type
 POST: {id, timestamp, sensor_reading}<br/>
-id: Integer representing the device id given to you in Mimir<br/>
-timestamp: UTC string representing the time the sensor reading was recorded<br/>
-sensor_reading: Raw/converted sensor output as a floating point decimal<br/>
+- id: Integer representing the device id given to you in Mimir<br/>
+- timestamp: UTC string representing the time the sensor reading was recorded<br/>
+- sensor_reading: Raw/converted sensor output as a floating point decimal<br/>
 ## Setup
 ### Ruby version
 Ruby 2.3
